@@ -6,12 +6,21 @@
 
 <% @restaurant.reviews.each do |review| %>
 <p><%= review.content %></p>
-<p><%= review.rating %></p>
+<p><%= '⭐️' * review.rating %></p>
 <hr>
 <% end %>
 
-
-<%= link_to 'Back', restaurants_path %>
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %>
-<%= link_to 'Review', new_restaurant_review_path(@restaurant)  %>
-<%= link_to 'Delete', restaurant_path(@restaurant), method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="row">
+  <div class="col">
+    <%= link_to 'Review', new_restaurant_review_path(@restaurant), class: 'btn btn-outline-primary w-100 rounded-pill p-3 mt-4' %>
+  </div>
+  <div class="col">
+    <%= link_to 'Back', restaurants_path, class: 'btn btn-outline-success w-100 rounded-pill p-3 mt-4' %>
+  </div>
+  <div class="col">
+    <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-outline-info w-100 rounded-pill p-3 mt-4' %>
+  </div>
+  <div class="col">
+    <%= link_to 'Delete', restaurant_path(@restaurant), class: 'btn btn-outline-danger w-100 rounded-pill p-3 mt-4', method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
